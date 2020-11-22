@@ -7,14 +7,22 @@ import org.openqa.selenium.support.FindBy;
 import pages.base.BasePage;
 
 public class MenuPage extends BasePage {
-    @FindBy(css = ".user-info a")
+    @FindBy(css = ".user-info a[title^='Log']")
     private WebElement signInButton;
+
+    @FindBy(css = ".user-info .account")
+    private WebElement userName;
 
     public MenuPage(WebDriver driver) {
         super(driver);
     }
 
-    public void openLoginPage(){
+    public LoginPage openLoginPage(){
         signInButton.click();
+        return new LoginPage(getDriver());
+    }
+
+    public String getUserName(){
+       return userName.getText();
     }
 }

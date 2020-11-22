@@ -13,7 +13,8 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void goToRegistrationPage() {
+    public RegistrationPage goToRegistrationPage() {
         goToRegistrationButton.click();
+        return new RegistrationPage(getDriver());
     }
 }
